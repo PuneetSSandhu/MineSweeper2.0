@@ -104,8 +104,8 @@ public class MineSweeper {
         }
     }
     protected void setFlag(View v){
-        if(MineSweeperGrid.getFlag() > 0) {
-            SweeperButton b = (SweeperButton) v;
+        SweeperButton b = (SweeperButton) v;
+        if(MineSweeperGrid.getFlag() > 0 || b.flagged) {
             if (!b.flagged) {
                 MineSweeperGrid.putFlag();
                 this.displayBoard[b.getIndex()[0]][b.getIndex()[1]] = 9;
