@@ -69,20 +69,24 @@ public class MineSweeperGrid extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         if(v.getId() == R.id.reset){
             this.mineSweeper = new MineSweeper(rows,cols,mines,this);
-            Toast.makeText(this, ("Reset"), Toast.LENGTH_SHORT).show();
             this.vib.vibrate(100);
             for(SweeperButton b:buttons){
                 b.setEnabled(true);
+                if(b.flagged){
+                    b.setFlagged();
+                }
             }
             redraw();
             MineSweeperGrid.flags = MineSweeperGrid.mines;
             flagMode = false;
+            firstClick = true;
+            Toast.makeText(this, ("Reset"), Toast.LENGTH_SHORT).show();
             return;
         }
         else if(v.getId() == R.id.flag){
             this.flagMode = !this.flagMode;
-            Toast.makeText(this, ("Flag Mode"+flagMode), Toast.LENGTH_SHORT).show();
             this.vib.vibrate(10);
+            Toast.makeText(this, ("Flag Mode"+flagMode), Toast.LENGTH_SHORT).show();
             return;
         }
         if (flagMode) {
@@ -105,9 +109,11 @@ public class MineSweeperGrid extends AppCompatActivity implements View.OnClickLi
                     onClick(v);
                 } else {
                     this.mineSweeper.openCell(getIdX(b), getIdY(b));
-                    Toast.makeText(this, "You lost", Toast.LENGTH_SHORT).show();
                     endGame();
                     redraw();
+                    this.vib.vibrate(500);
+                    Toast.makeText(this, "You lost", Toast.LENGTH_SHORT).show();
+
                 }
                 return;
             } else if (mineSweeper.getCell(getIdX(b), getIdY(b)) != 0) {

@@ -4,18 +4,38 @@ package com.example.minesweeper20;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Options extends AppCompatActivity implements View.OnClickListener{
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options_screen);
         findViewById(R.id.submit).setOnClickListener(this);
-
+//        findViewById(R.id.progress).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//                // TODO Auto-generated method stub
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//                // TODO Auto-generated method stub
+//            }
+//
+//            @Override
+//            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+//                // TODO Auto-generated method stub
+//                TextView num = findViewById(R.id.progress);
+//                num.setText(seekBar.getProgress());
+//            }
+//        });
+//
     }
 
     @Override
