@@ -20,7 +20,7 @@ import static java.lang.Math.min;
 
 public class MineSweeperGrid extends AppCompatActivity implements View.OnClickListener {
     private ArrayList<SweeperButton> buttons = new ArrayList<>();
-    static private int rows = 15;
+    static private int rows = 12;
     static private int cols = 10;
     static private int mines = 20;
     static private int flags = mines;
